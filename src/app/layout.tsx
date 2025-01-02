@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans } from 'next/font/google'
 import './globals.css'
 import { ClerkProvider } from '@clerk/nextjs'
+import { ThemeProvider } from '@/components/theme-provider'
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'] })
 
@@ -22,7 +23,12 @@ export default function RootLayout({
           suppressHydrationWarning
           className={jakarta.className}
         >
-          {children}
+          <ThemeProvider attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>
