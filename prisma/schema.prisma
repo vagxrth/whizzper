@@ -38,6 +38,7 @@ model Automation {
   active Boolean @default(false)
   User User? @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String? @unique @db.Uuid
+  dms DMs[]
 }
 
 model Integrations {
@@ -49,6 +50,16 @@ model Integrations {
   token       String       @unique
   expiresAt   DateTime?
   instagramId String?      @unique
+}
+
+model DMs {
+  id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  Automation   Automation? @relation(fields: [automationId], references: [id])
+  automationId String?     @db.Uuid
+  createdAt    DateTime    @default(now())
+  senderId     String?
+  reciever     String?
+  message      String?
 }
 
 enum INTEGRATIONS {
