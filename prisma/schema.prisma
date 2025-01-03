@@ -41,6 +41,7 @@ model Automation {
   dms DMs[]
   posts     Post[]
   listener  Listener?
+  trigger   Trigger[]
 }
 
 model Integrations {
@@ -83,6 +84,13 @@ model Listener {
   commentReply String?
   dmCount      Int        @default(0)
   commentCount Int        @default(0)
+}
+
+model Trigger {
+  id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  type         String
+  Automation   Automation? @relation(fields: [automationId], references: [id], onDelete: Cascade)
+  automationId String?     @db.Uuid
 }
 
 enum INTEGRATIONS {
