@@ -14,78 +14,81 @@ datasource db {
 }
 
 model User {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  clerkId String @unique 
-  email String @unique
-  firstname String? @unique
-  last String? @unique
-  createdAt DateTime @default(now())
+  id           String         @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  clerkId      String         @unique
+  email        String         @unique
+  firstName    String?        @unique
+  lastName     String?        @unique
+  createdAt    DateTime       @default(now())
   subscription Subscription?
-  automations Automation[]
+  automations  Automation[]
   integrations Integrations[]
 }
 
 model Subscription {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  User User? @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String? @unique @db.Uuid
+  id         String            @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   plan       SUBSCRIPTION_PLAN @default(FREE)
+  createdAt  DateTime          @default(now())
+  updatedAt  DateTime          @default(now())
+  customerId String?           @unique
+  User       User?             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId     String?           @unique @db.Uuid
 }
 
 model Automation {
-  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  name String @default("Untitled")
-  createdAt DateTime @default(now())
-  active Boolean @default(false)
-  User User? @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId String? @unique @db.Uuid
-  dms DMs[]
+  id        String    @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name      String    @default("Untitled")
+  createdAt DateTime  @default(now())
+  active    Boolean   @default(false)
+  dms       DMs[]
   posts     Post[]
   listener  Listener?
-  trigger   Trigger[]
+  triggers  Trigger[]
   keywords  Keyword[]
+  User      User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId    String?   @unique @db.Uuid
 }
 
 model Integrations {
   id          String       @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name        INTEGRATIONS @default(INSTAGRAM)
   createdAt   DateTime     @default(now())
-  User        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String?      @db.Uuid
   token       String       @unique
   expiresAt   DateTime?
   instagramId String?      @unique
+  User        User?        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId      String?      @db.Uuid
 }
 
 model DMs {
   id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Automation   Automation? @relation(fields: [automationId], references: [id])
-  automationId String?     @db.Uuid
   createdAt    DateTime    @default(now())
   senderId     String?
-  reciever     String?
+  receiver     String?
   message      String?
+  Automation   Automation? @relation(fields: [automationId], references: [id])
+  automationId String?     @db.Uuid
 }
 
 model Post {
   id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  postid       String
+  postId       String
   caption      String?
   media        String
-  mediaType    MEDIATYPE   @default(IMAGE)
+  mediaType    MEDIA_TYPE  @default(IMAGE)
   Automation   Automation? @relation(fields: [automationId], references: [id], onDelete: Cascade)
   automationId String?     @db.Uuid
 }
 
 model Listener {
   id           String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
-  Automation   Automation @relation(fields: [automationId], references: [id], onDelete: Cascade)
-  automationId String     @unique @db.Uuid
   listener     LISTENERS  @default(MESSAGE)
   prompt       String
   commentReply String?
   dmCount      Int        @default(0)
   commentCount Int        @default(0)
+  Automation   Automation @relation(fields: [automationId], references: [id], onDelete: Cascade)
+  automationId String     @unique @db.Uuid
 }
 
 model Trigger {
@@ -108,10 +111,10 @@ enum INTEGRATIONS {
   INSTAGRAM
 }
 
-enum MEDIATYPE {
+enum MEDIA_TYPE {
   IMAGE
-  VIDEO
-  CAROSEL_ALBUM
+  REEL
+  CAROUSEL
 }
 
 enum LISTENERS {
