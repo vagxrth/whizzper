@@ -12,3 +12,19 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model User {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  clerkId String @unique 
+  email String @unique
+  firstname String? @unique
+  last String? @unique
+  createdAt DateTime @default(now())
+  subscription Subscription?
+}
+
+model Subscription {
+  id String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  User User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId String? @unique @db.Uuid
+}
