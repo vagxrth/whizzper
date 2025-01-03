@@ -42,6 +42,7 @@ model Automation {
   posts     Post[]
   listener  Listener?
   trigger   Trigger[]
+  keywords  Keyword[]
 }
 
 model Integrations {
@@ -91,6 +92,15 @@ model Trigger {
   type         String
   Automation   Automation? @relation(fields: [automationId], references: [id], onDelete: Cascade)
   automationId String?     @db.Uuid
+}
+
+model Keyword {
+  id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  word         String
+  Automation   Automation? @relation(fields: [automationId], references: [id], onDelete: Cascade)
+  automationId String?     @db.Uuid
+
+  @@unique([automationId, word])
 }
 
 enum INTEGRATIONS {
