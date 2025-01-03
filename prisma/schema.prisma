@@ -39,6 +39,7 @@ model Automation {
   User User? @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId String? @unique @db.Uuid
   dms DMs[]
+  posts     Post[]
 }
 
 model Integrations {
@@ -62,6 +63,22 @@ model DMs {
   message      String?
 }
 
+model Post {
+  id           String      @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  postid       String
+  caption      String?
+  media        String
+  mediaType    MEDIATYPE   @default(IMAGE)
+  Automation   Automation? @relation(fields: [automationId], references: [id], onDelete: Cascade)
+  automationId String?     @db.Uuid
+}
+
 enum INTEGRATIONS {
   INSTAGRAM
+}
+
+enum MEDIATYPE {
+  IMAGE
+  VIDEO
+  CAROSEL_ALBUM
 }
