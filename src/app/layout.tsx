@@ -21,7 +21,6 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" suppressHydrationWarning>
         <body
-          suppressHydrationWarning
           className={jakarta.className}
         >
           <ThemeProvider attribute="class"
