@@ -1,10 +1,11 @@
+import Loader from '@/components/global/loader'
 import React from 'react'
 
-type Props = {}
-
-const Loading = (props: Props) => {
+const Loading = () => {
   return (
-    <div className='h-screen flex justify-center items-center'>Loading</div>
+    <div className='h-screen flex justify-center items-center'>
+        <Loader state>Loading...</Loader>
+    </div>
   )
 }
 

@@ -15,7 +15,7 @@ const Loader = ({ children, state, className, color }: Props) => {
       <Spinner color={color} />
     </div>
   ) : (
-    { children }
+    children
   )
 }
 
