@@ -18,7 +18,7 @@ const Sidebar = ({ slug }: Props) => {
                     WHIZZPER
                 </div>
                 <div className='flex flex-col py-3'>
-                    <Items />
+                    <Items page={ page } slug= { slug }/>
                 </div>
             </div>
         </div>
