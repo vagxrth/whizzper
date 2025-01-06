@@ -1,6 +1,7 @@
 'use client'
 import { usePath } from '@/hooks/use-path'
 import React from 'react'
+import Items from './items'
 
 type Props = {
     slug: string
@@ -15,6 +16,9 @@ const Sidebar = ({ slug }: Props) => {
             <div className='flex flex-col gap-y-5 w-full h-full p-3 bg-[#0e0e0e] bg-opacity-90 bg-clip-padding backdrop-filter backdrop--blur__safari backdrop-blur-3xl'>
                 <div className='flex gap-x-2 items-center p-5 justify-center'>
                     WHIZZPER
+                </div>
+                <div className='flex flex-col py-3'>
+                    <Items />
                 </div>
             </div>
         </div>
