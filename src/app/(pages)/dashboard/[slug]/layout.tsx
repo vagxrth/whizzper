@@ -1,3 +1,4 @@
+import Sidebar from '@/components/global/sidebar'
 import React from 'react'
 
 type Props = {
@@ -5,12 +6,15 @@ type Props = {
     params: Promise<{ slug: string }>
 }
 
-const Layout = ({ children, params }: Props) => {
-  return (
-    <div className='p-3'>
-        { children }
-    </div>
-  )
+async function Layout({ children, params }: Props) {
+    const { slug } = await params
+  
+    return (
+        <div className='p-3'>
+            <Sidebar slug={slug} />
+            {children}
+        </div>
+    )
 }
 
 export default Layout

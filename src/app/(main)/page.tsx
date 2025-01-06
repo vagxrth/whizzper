@@ -8,7 +8,7 @@ export default function Home() {
         <div className="text-2xl font-bold text-white font-sans">WHIZZPER</div>
         <nav>
           <Link
-            href="/login"
+            href="/signin"
             className="px-6 py-3 rounded-full bg-white bg-opacity-10 hover:bg-opacity-20 transition-all duration-300 text-sm font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
           >
             Login
