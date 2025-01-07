@@ -2,6 +2,7 @@
 import { usePath } from '@/hooks/use-path'
 import React from 'react'
 import Items from './items'
+import { Separator } from '@/components/ui/separator'
 
 type Props = {
     slug: string
@@ -19,6 +20,13 @@ const Sidebar = ({ slug }: Props) => {
                 </div>
                 <div className='flex flex-col py-3'>
                     <Items page={ page } slug= { slug }/>
+                </div>
+                <div>
+                    <Separator orientation='horizontal' className='bg-[#333336]'/>
+                </div>
+                <div className="px-3 flex flex-col gap-y-5" />
+                <div className='flex gap-x-2'>
+                    <p className='text-[#9B9CA0]'>Profile</p>
                 </div>
             </div>
         </div>
