@@ -38,7 +38,7 @@ const Sidebar = ({ slug }: Props) => {
                         <p className='text-[#9B9CA0]'>Help</p>
                     </div>
                 </div>
-                <Subscription>
+                <Subscription type='FREE'>
                     <div className='flex-1 flex flex-col justify-end'>
                         <UpgradeCard />
                     </div>
