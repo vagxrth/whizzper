@@ -7,7 +7,7 @@ const UpgradeCard = () => {
         <span className='text-sm'>
             Upgrade to {''}
             <span className='bg-gradient-to-r from-[#CC3BD4] to-[#D064AC] font-bold bg-clip-text text-transparent'>
-                AI
+                Whizzper AI
             </span>
         </span>
         <p className="text-[#9B9CA0] font-light text-sm">Unlock all features <br /> including AI and more</p>
