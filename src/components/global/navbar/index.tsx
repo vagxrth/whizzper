@@ -13,6 +13,7 @@ import Subscription from '../subscription'
 import ClerkProfile from '../clerk-profile'
 import Search from './search'
 import CreateAutomation from '../create-automation'
+import { Notifications } from './notifications'
 
 type Props = {
     slug: string
@@ -63,6 +64,7 @@ const Navbar = ({ slug }: Props) => {
                 </span>
                 <Search />
                 <CreateAutomation />
+                <Notifications />
             </div>
         </div>
     )
