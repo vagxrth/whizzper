@@ -1,3 +1,5 @@
+'use client'
+
 import { PAGE_BREAD_CRUMBS } from '@/constants/pages'
 import { usePath } from '@/hooks/use-path'
 import React from 'react'
@@ -9,6 +11,7 @@ import { HelpDuoToneWhite } from '@/icons/help-duotone-white'
 import UpgradeCard from '../sidebar/upgrade'
 import Subscription from '../subscription'
 import ClerkProfile from '../clerk-profile'
+import Search from './search'
 
 type Props = {
     slug: string
@@ -29,8 +32,8 @@ const Navbar = ({ slug }: Props) => {
                             </div>
                             <div className="flex flex-col py-3">
                                 <Items
-                                    page={page}
-                                    slug={slug}
+                                    page={ page }
+                                    slug={ slug }
                                 />
                             </div>
                             <div className="px-16">
@@ -57,6 +60,7 @@ const Navbar = ({ slug }: Props) => {
                         </div>
                     </Sheet>
                 </span>
+                <Search />
             </div>
         </div>
     )
