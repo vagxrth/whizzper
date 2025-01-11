@@ -12,6 +12,7 @@ import UpgradeCard from '../sidebar/upgrade'
 import Subscription from '../subscription'
 import ClerkProfile from '../clerk-profile'
 import Search from './search'
+import CreateAutomation from '../create-automation'
 
 type Props = {
     slug: string
@@ -61,6 +62,7 @@ const Navbar = ({ slug }: Props) => {
                     </Sheet>
                 </span>
                 <Search />
+                <CreateAutomation />
             </div>
         </div>
     )
