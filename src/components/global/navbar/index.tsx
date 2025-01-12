@@ -14,6 +14,7 @@ import ClerkProfile from '../clerk-profile'
 import Search from './search'
 import CreateAutomation from '../create-automation'
 import { Notifications } from './notifications'
+import MainBreadCrumb from '../bread-crumbs/main'
 
 type Props = {
     slug: string
@@ -66,7 +67,7 @@ const Navbar = ({ slug }: Props) => {
                 <CreateAutomation />
                 <Notifications />
             </div>
-            <MainBreadCrumb />
+            <MainBreadCrumb page={ page === slug ? 'Home' : page } slug= { slug }/>
         </div>
     )
 }
