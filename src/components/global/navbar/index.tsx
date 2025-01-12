@@ -66,6 +66,7 @@ const Navbar = ({ slug }: Props) => {
                 <CreateAutomation />
                 <Notifications />
             </div>
+            <MainBreadCrumb />
         </div>
     )
 }
