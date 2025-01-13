@@ -28,7 +28,7 @@ const PaymentCard = ({ current, label, landing }: Props) => {
       >
         {landing ? (
           <h2 className="text-2xl">
-            {label === 'PRO' && 'Premium Plan'}
+            {label === 'PRO' && 'Premium'}
             {label === 'FREE' && 'Standard'}
           </h2>
         ) : (
@@ -41,11 +41,11 @@ const PaymentCard = ({ current, label, landing }: Props) => {
           </h2>
         )}
         <p className="text-text-secondary text-sm mb-2">
-          This is what your plan covers for automations and Ai features
+          This is what your plan covers for automations and AI features
         </p>
         {label === 'PRO' ? (
           <span className="bg-gradient-to-r text-3xl from-indigo-500 via-purple-500 font-bold to-pink-500 bg-clip-text text-transparent">
-            Smart AI
+            AI
           </span>
         ) : (
           <p className="font-bold mt-2 text-text-secondary">Standard</p>

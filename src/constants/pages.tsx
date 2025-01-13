@@ -38,7 +38,7 @@ import {
       cta: 'Get Started',
     },
     {
-      name: 'Smart AI Plan',
+      name: 'AI Plan',
       description: 'Advanced features for power users',
       price: '$99',
       features: [
