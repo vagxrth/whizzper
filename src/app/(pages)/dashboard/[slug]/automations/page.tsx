@@ -1,3 +1,4 @@
+import CreateAutomation from '@/components/global/create-automation'
 import { Check } from 'lucide-react'
 import React from 'react'
 
@@ -22,6 +23,7 @@ const Page = () => {
                         <Check />
                     </div>))}
                 </div>
+                <CreateAutomation />
             </div>
         </div>
     </div>
