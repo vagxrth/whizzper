@@ -4,6 +4,7 @@ import { usePath } from '@/hooks/use-path'
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import React from 'react'
+import GradientButton from '../gradient-button';
 
 
 const AutomationList = () => {
@@ -25,6 +26,14 @@ const AutomationList = () => {
                     <p className="text-sm text-[#bfc0c3]">No Keywords</p>
                 </div>
             </div>
+            <div className='flex flex-col justify-between'>
+                <p className="capitalize text-sm font-light text-[#9B9CA0]">
+                    January 01, 2025
+                </p>
+                <GradientButton type='BUTTON' className="w-full bg-background-80 text-white hover:bg-background-80">
+                    WHIZZPER AI
+                </GradientButton>
+            </div>  
         </Link>
     </div>
   )
