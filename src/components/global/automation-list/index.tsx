@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import React from 'react'
 import GradientButton from '../gradient-button';
+import { Button } from '@/components/ui/button';
 
 
 const AutomationList = () => {
@@ -33,6 +34,9 @@ const AutomationList = () => {
                 <GradientButton type='BUTTON' className="w-full bg-background-80 text-white hover:bg-background-80">
                     WHIZZPER AI
                 </GradientButton>
+                <Button className="bg-background-80 hover:bg-background-80 text-white">
+                    Standard
+                </Button>
             </div>  
         </Link>
     </div>
