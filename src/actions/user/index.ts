@@ -2,7 +2,7 @@
 
 import { currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
-import { findUser } from "./queries"
+import { createUser, findUser } from "./queries"
 import { refreshToken } from "@/lib/fetch"
 import { updateIntegration } from "../integration/queries"
 
@@ -20,7 +20,9 @@ export const onBoardUser = async() => {
         if (found) {
             if (found.integrations.length > 0) {
                 const today = new Date();
-                const timeLeft = found.integrations[0].expiresAt?.getTime() - today.getTime()
+                const expiresAt = found.integrations[0].expiresAt;
+                if (!expiresAt) return;
+                const timeLeft = expiresAt.getTime() - today.getTime();
 
                 const days = Math.round(timeLeft / ( 1000 * 3600 * 24 ))
 
@@ -37,12 +39,19 @@ export const onBoardUser = async() => {
             return {
                 status: 200,
                 data: {
-                    firstname: found.firstname,
-                    lastname: found.lastname,
+                    firstName: found.firstName,
+                    lastName: found.lastName,
                 }
             }
         }
+
+        const created = await createUser( user.id, user.firstName!, user.lastName!, user.emailAddresses[0].emailAddress )
+        return { 
+            status: 201,
+            data: created 
+        }
     } catch (error) {
-        
+        console.log(error)
+        return { status: 500 }
     }
 }
