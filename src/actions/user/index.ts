@@ -24,7 +24,12 @@ export const onBoardUser = async() => {
                 const days = Math.round(timeLeft / ( 1000 * 3600 * 24 ))
 
                 if (days < 5) {
-                    const refresh = await refreshToken()
+                    const refresh = await refreshToken(found.integrations[0].token)
+
+                    const today = new Date()
+                    const expireDate = today.setDate(today.getDate() + 60)
+
+                    const updateToken = await 
                 }
             }
         }
