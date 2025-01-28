@@ -4,6 +4,7 @@ import { currentUser } from "@clerk/nextjs/server"
 import { redirect } from "next/navigation"
 import { findUser } from "./queries"
 import { refreshToken } from "@/lib/fetch"
+import { updateIntegration } from "../integration/queries"
 
 export const onCurrentUser = async () => {
     const user = await currentUser()
@@ -29,7 +30,15 @@ export const onBoardUser = async() => {
                     const today = new Date()
                     const expireDate = today.setDate(today.getDate() + 60)
 
-                    const updateToken = await 
+                    const updateToken = await updateIntegration(refresh.access_token, new Date(expireDate), found.integrations[0].id)
+                }
+            }
+
+            return {
+                status: 200,
+                data: {
+                    firstname: found.firstname,
+                    lastname: found.lastname,
                 }
             }
         }
