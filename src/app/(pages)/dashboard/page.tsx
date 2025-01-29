@@ -10,7 +10,7 @@ const page = async() => {
   if (!user) return redirect('/signin');
 
   if (user.status === 200 || user.status === 201) {
-    return redirect(`dashboard/${user.data?.firstName}${user.data?.lastName}`)
+    return redirect(`dashboard/${user.data?.firstName}`)
   }
 
   return redirect('/signin')
