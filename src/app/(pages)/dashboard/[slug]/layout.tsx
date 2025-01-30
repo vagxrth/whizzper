@@ -1,6 +1,7 @@
 import Navbar from '@/components/global/navbar'
 import Sidebar from '@/components/global/sidebar'
 import React from 'react'
+import { QueryClient } from '@tanstack/react-query'
 
 type Props = {
     children: React.ReactNode,
@@ -9,6 +10,8 @@ type Props = {
 
 async function Layout({ children, params }: Props) {
     const { slug } = await params
+
+    const query = new QueryClient()
   
     return (
         <div className='p-3'>
