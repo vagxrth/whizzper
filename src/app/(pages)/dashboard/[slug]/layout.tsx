@@ -2,6 +2,7 @@ import Navbar from '@/components/global/navbar'
 import Sidebar from '@/components/global/sidebar'
 import React from 'react'
 import { QueryClient } from '@tanstack/react-query'
+import { PrefetchUserProfile } from '@/react-query/prefetch'
 
 type Props = {
     children: React.ReactNode,
@@ -12,6 +13,8 @@ async function Layout({ children, params }: Props) {
     const { slug } = await params
 
     const query = new QueryClient()
+
+    await PrefetchUserProfile(query)
   
     return (
         <div className='p-3'>
