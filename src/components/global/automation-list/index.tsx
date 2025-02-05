@@ -6,7 +6,7 @@ import Link from 'next/link';
 import React from 'react'
 import GradientButton from '../gradient-button';
 import { Button } from '@/components/ui/button';
-import { useQueryAutomations } from '@/hooks/user-queries';
+import { useQueryAutomations } from '@/hooks/use-queries';
 import CreateAutomation from '../create-automation';
 
 
