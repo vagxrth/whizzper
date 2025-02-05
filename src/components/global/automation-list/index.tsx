@@ -8,11 +8,14 @@ import GradientButton from '../gradient-button';
 import { Button } from '@/components/ui/button';
 import { useQueryAutomations } from '@/hooks/use-queries';
 import CreateAutomation from '../create-automation';
+import { useMutationDataState } from '@/hooks/use-mutation';
 
 
 const AutomationList = () => {
 
     const { data } = useQueryAutomations();
+
+    const { latestVariable } = useMutationDataState(['create-automation'])
 
     const { pathname } = usePath();
 
